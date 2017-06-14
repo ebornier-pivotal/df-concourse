@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BasicConcourseApplication {
 
   private static Logger log = LoggerFactory.getLogger(BasicConcourseApplication.class);
-    
+
     public static void main(String[] args) {
 		SpringApplication.run(BasicConcourseApplication.class, args);
 	}
@@ -28,9 +28,9 @@ public class BasicConcourseApplication {
 
     @RequestMapping("/")
     public String index() throws Exception {
-       log.info("Handling greetings"); 
-       return "Greetings from DF V0.5.0!";    
-    }    
+       log.info("Handling greetings");
+       return "Greetings from DF Concours V0.2.0!";    
+    }
 
 
 
