@@ -8,10 +8,10 @@ image_resource:
     tag: '8'
 
 inputs:
-- name: thales-repo
-- name: thales-release
+- name: git-repo
+- name: git-release
 outputs:
 - name: build 
 
 run:
-  path: thales-repo/thales-df-workshops/basic-concourse/ci/build-release.sh 
+  path: git-repo/ci/build-release.sh 

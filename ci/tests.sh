@@ -1,3 +1,3 @@
 #!/bin/bash 
-cd thales-repo/thales-df-workshops/basic-concourse
+cd git-repo
 echo "Performed testing at scale" 
