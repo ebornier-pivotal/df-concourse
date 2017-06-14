@@ -100,7 +100,6 @@ jobs:
   plan:
   - get: git-repo
   - get: git-release
-    trigger: true
   - task: build
     file: git-repo/ci/analyze.yml
 
@@ -136,27 +135,13 @@ jobs:
   - task: build
     file: git-repo/ci/analyze.yml
 
-- name: create-services
-  serial: true
-  public: true # cf does not shows auth. logs so it is ok
-  plan:
-  - get: git-repo
-    trigger: true
-    passed: [ tests-repo ]
-  - task: create-services
-    file: git-repo/ci/create-services.yml
-    params:
-      CF_API: {{cf-api}}
-      CF_USERNAME: {{cf-username}}
-      CF_PASSWORD: {{cf-password}}
-
 - name: deploy-to-development
   serial: true
   public: true # cf does not shows auth. logs so it is ok
   plan:
   - get: git-repo
     trigger: true
-    passed: [ create-services ]
+    passed: [ tests-repo ]
   - task: build
     file: git-repo/ci/build.yml
   - put: cf-dev
