@@ -12,7 +12,7 @@ resources:
 - name: git-repo
   type: git
   source:
-    uri: git@github.com:ebornier-pivotal/cf-concourse.git
+    uri: git@github.com:ebornier-pivotal/df-concourse.git
     private_key: {{git_private_key}}
 
 - name: cf-dev
@@ -51,7 +51,7 @@ resources:
     user: ebornier-pivotal
     access_token: {{access-token}}
     check: true
-    repository: cf-concourse
+    repository: df-concourse
     include_source_tarball: true
     include_source_zip: true
     pre_release: true
@@ -62,7 +62,7 @@ resources:
     user: ebornier-pivotal
     access_token: {{access-token}}
     check: true
-    repository: cf-concourse
+    repository: df-concourse
     include_source_tarball: true
     include_source_zip: true
     pre_release: false
@@ -162,15 +162,15 @@ jobs:
   - put: cf-dev
     params:
       manifest: build/manifest-dev.yml
-      current_app_name: cf-concourse
-      path: build/cf-concourse-0.0.1-SNAPSHOT.jar
+      current_app_name: df-concourse
+      path: build/df-concourse-0.0.1-SNAPSHOT.jar
   - put: slack-alert
     params:
       channel: '#circle-of-code'
       text: |
         The build had a result. Check it out at:
         https://a-concourse2-630322659.eu-west-1.elb.amazonaws.com//builds/$BUILD_ID
-        The application is now available in development at https://cf-concourse.development.cfapps.alex.examples.cf
+        The application is now available in development at https://df-concourse.development.cfapps.alex.examples.cf
 
 - name: deploy-to-qa
   public: true
@@ -187,15 +187,15 @@ jobs:
   - put: cf-qa
     params:
       manifest: build/manifest-qa.yml
-      current_app_name: cf-concourse
-      path: build/cf-concourse-0.0.1-SNAPSHOT.jar
+      current_app_name: df-concourse
+      path: build/df-concourse-0.0.1-SNAPSHOT.jar
   - put: slack-alert
     params:
       channel: '#circle-of-code'
       text: |
         The build had a result. Check it out at:
         https://a-concourse2-630322659.eu-west-1.elb.amazonaws.com//builds/$BUILD_ID
-        The application is now available in qa at https://cf-concourse.qa.cfapps.alex.examples.cf
+        The application is now available in qa at https://df-concourse.qa.cfapps.alex.examples.cf
 
 - name: deploy-to-prod
   public: true
@@ -212,12 +212,12 @@ jobs:
   - put: cf-prod
     params:
       manifest: build/manifest-prod.yml
-      current_app_name: cf-concourse
-      path: build/cf-concourse-0.0.1-SNAPSHOT.jar
+      current_app_name: df-concourse
+      path: build/df-concourse-0.0.1-SNAPSHOT.jar
   - put: slack-alert
     params:
       channel: '#circle-of-code'
       text: |
         The build had a result. Check it out at:
         https://a-concourse2-630322659.eu-west-1.elb.amazonaws.com//builds/$BUILD_ID
-        The application is now available in production at https://cf-concourse.production.cfapps.alex.examples.cf
+        The application is now available in production at https://df-concourse.production.cfapps.alex.examples.cf
