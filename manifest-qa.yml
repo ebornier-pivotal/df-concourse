@@ -1,0 +1,9 @@
+---
+applications:
+- name: df-concourse 
+  memory: 512MB
+  domain: qa.cfapps.alex.examples.cf
+  instances: 1
+  services:
+    - sso-qa
+    - basic-concourse-db

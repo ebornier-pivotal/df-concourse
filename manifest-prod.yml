@@ -1,0 +1,10 @@
+---
+applications:
+- name: df-concourse 
+  memory: 512MB
+  instances: 3
+  domain: production.cfapps.alex.examples.cf
+  instances: 1
+  services:
+    - sso-prod
+    - df-concourse-db
